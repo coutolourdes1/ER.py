@@ -1,1 +1,5 @@
-h o u r s 17
+hours 17
+number 15
+course 27
+fees 23
+location 14
