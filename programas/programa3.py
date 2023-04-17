@@ -3,13 +3,14 @@ import sys
 
 
 def stringFromMatch(match):
-    return f"{match[2]} {len(match[3].split(','))}"
+    patterns = re.findall(r'".*"', match[4])
+    return f"{match[2]} {len(patterns)}"
 
 
 def prog(texto):
 
     matches = re.findall(
-        r'{\s*("tag": ("(.+)")),\s*("patterns":\s*\[\s*((".*",{0,1}\s*))*)(.|\s)*?}', texto)
+        r'{\s*("tag": ("(.+)")),\s*("patterns":\s*(\[\s*((".*",{0,1}\s*))*)(.|\s)*?)}', texto)
 
     result = '\n'.join(map(stringFromMatch, matches))
     return result
